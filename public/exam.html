@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #4481eb, #04befe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-wrapper {
+            width: 400px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        h2 {
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4481eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-wrapper">
+        <form id="examForm" action="/uploadExam" method="POST" enctype="multipart/form-data">
+            <h2>Upload Sample Paper</h2>
+            <br>
+            <input type="file" id="samplePaperInput" name="sample_paper" required>
+            <button type="submit">Upload Sample Paper</button>
+        </form>
+        <br><br>
+        <form id="examPaperForm" action="/uploadExam" method="POST" enctype="multipart/form-data">
+            <h2>Upload Examination Paper</h2>
+            <br>
+            <input type="file" id="examPaperInput" name="exam_paper" required>
+            <button type="submit">Upload Examination Paper</button>
+        </form>
+    </div>
+
+    <script>
+        function uploadFile(fileType) {
+            const input = document.getElementById(fileType + 'Input');
+            const file = input.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append(fileType, file);
+
+                fetch('/uploadExam', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        // Display success message
+                        alert(data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

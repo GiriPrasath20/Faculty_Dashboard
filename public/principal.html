@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Principal's Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body style="background-attachment: fixed;">
+    <div class="container">
+        <div class="left-column">
+            <h1>Principal's Dashboard</h1>
+
+            <div class="dashboard-item">
+                <h2>Meetings</h2>
+                <button class="schedule-button" onclick="openModal()">Schedule</button>
+
+                <!-- Your meeting scheduling form goes here -->
+            </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Schedule a Meeting</h2>
+                        <span class="modal-close" onclick="closeModal()" style="font-size: 28px;">&times;</span>
+                    </div>
+                    <br>
+                    <form>
+                        <!-- Your form fields for meeting details here -->
+                        <div>
+                            <label for="meeting-description">Description:</label>
+                            <input type="text" id="meeting-description" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="meeting-date">Date:</label>
+                            <input type="date" id="meeting-date" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="meeting-time">Time:</label>
+                            <input type="time" id="meeting-time" required>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="meeting-attendees">Attendees:</label>
+                            <input type="text" id="meeting-attendees" required>
+                        </div>
+                        <br>
+                        <button type="submit" onclick="alert('Meeting Scheduled Successfully')">Schedule</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <h2>Attendance Sheet</h2>
+                <button id="downloadButton" class="schedule-button" onclick="downloadAttendance()">Download</button>
+            </div>
+
+            <div class="dashboard-item">
+                <h2>Approve Leave</h2>
+                <div class="leave-list">
+                    <div class="leave-item">
+                        <p><strong>Faculty ID:</strong> 1003 | <strong>Start Date:</strong> 2023-06-13 | <strong>End
+                                Date:</strong> 2023-06-15 <strong> Leave Reason:</strong> Sick</p>
+                        <div class="button-container">
+                            <button class="approve-button" onclick="approveLeave(this)">Approve</button>
+                            <button class="deny-button" onclick="denyLeave(this)">Deny</button>
+                        </div>
+                    </div>
+                    <div class="leave-item">
+
+                        <p><strong>Faculty ID:</strong> 1004 | <strong>Start Date:</strong> 2023-06-13 | <strong>End
+                                Date:</strong> 2023-06-16 <strong> Leave Reason:</strong> Personal</p>
+                        <div class="button-container">
+                            <button class="approve-button" onclick="approveLeave(this)">Approve</button>
+                            <button class="deny-button" onclick="denyLeave(this)">Deny</button>
+                        </div>
+
+
+                    </div>
+                    <!-- Add more leave items here -->
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <h2>Approve Bonafide</h2>
+                <div class="bonafide-list">
+                    <div class="bonafide-item">
+                        <p><strong>Faculty ID:</strong> 1003 | <strong> Bonafide Reason:</strong> Research</p>
+                        <div class="button-container">
+                            <button class="approve-button" onclick="approveBonafide(this)">Approve</button>
+                            <button class="deny-button" onclick="denyBonafide(this)">Deny</button>
+                        </div>
+                    </div>
+
+                    <div class="bonafide-item">
+                        <p><strong>Faculty ID:</strong> 1004 | <strong> Bonafide Reason:</strong> Internship</p>
+                        <div class="button-container">
+                            <button class="approve-button" onclick="approveBonafide(this)">Approve</button>
+                            <button class="deny-button" onclick="denyBonafide(this)">Deny</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="power-button-container" onclick="logout()">
+                <div class="power-button">
+                    <i class="fas fa-power-off" style="font-size: 25px;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class=" right-column">
+
+            <section class="calendar">
+                <h1>July 2023</h1>
+                <form action="#">
+                    <label class="weekday">Mo</label>
+                    <label class="weekday">Tu</label>
+                    <label class="weekday">We</label>
+                    <label class="weekday">Th</label>
+                    <label class="weekday">Fr</label>
+                    <label class="weekday">Sa</label>
+                    <label class="weekday">Su</label>
+
+                    <label class="day invalid">-</label>
+                    <label class="day invalid">-</label>
+                    <label class="day invalid">-</label>
+                    <label class="day" data-day="0">
+                        <input class="appointment" type="text" required="true" data-date-day="1"
+                            placeholder="What would you like to do?">
+                        <span>1</span>
+                        <em></em>
+                    </label>
+                    <label class="day" data-day="1">
+                        <input class="appointment" type="text" required="true" data-date-day="2"
+                            placeholder="What would you like to do?">
+                        <span>2</span>
+                        <em></em>
+                    </label>
+
+                    <label class="day" data-day="2">
+                        <input class="appointment" type="text" required="true" data-date-day="3"
+                            placeholder="What would you like to do?">
+                        <span>3</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="3">
+                        <input class="appointment" type="text" required="true" data-date-day="4"
+                            placeholder="What would you like to do?">
+                        <span>4</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="4">
+                        <input class="appointment" type="text" required="true" data-date-day="5"
+                            placeholder="What would you like to do?">
+                        <span>5</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="5">
+                        <input class="appointment" type="text" required="true" data-date-day="6"
+                            placeholder="What would you like to do?">
+                        <span>6</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="6">
+                        <input class="appointment" type="text" required="true" data-date-day="7"
+                            placeholder="What would you like to do?">
+                        <span>7</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="7">
+                        <input class="appointment" type="text" required="true" data-date-day="8"
+                            placeholder="What would you like to do?">
+                        <span>8</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="8">
+                        <input class="appointment" type="text" required="true" data-date-day="9"
+                            placeholder="What would you like to do?">
+                        <span>9</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="9">
+                        <input class="appointment" type="text" required="true" data-date-day="10"
+                            placeholder="What would you like to do?">
+                        <span>10</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="10">
+                        <input class="appointment" type="text" required="true" data-date-day="11"
+                            placeholder="What would you like to do?">
+                        <span>11</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="11">
+                        <input class="appointment" type="text" required="true" data-date-day="12"
+                            placeholder="What would you like to do?">
+                        <span>12</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="12">
+                        <input class="appointment" type="text" required="true" data-date-day="13"
+                            placeholder="What would you like to do?">
+                        <span>13</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="13">
+                        <input class="appointment" type="text" required="true" data-date-day="14"
+                            placeholder="What would you like to do?">
+                        <span>14</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="14">
+                        <input class="appointment" type="text" required="true" data-date-day="15"
+                            placeholder="What would you like to do?">
+                        <span>15</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="15">
+                        <input class="appointment" type="text" required="true" data-date-day="16"
+                            placeholder="What would you like to do?">
+                        <span>16</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="16">
+                        <input class="appointment" type="text" required="true" data-date-day="17"
+                            placeholder="What would you like to do?">
+                        <span>17</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="17">
+                        <input class="appointment" type="text" required="true" data-date-day="18"
+                            placeholder="What would you like to do?">
+                        <span>18</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="18">
+                        <input class="appointment" type="text" required="true" data-date-day="19"
+                            placeholder="What would you like to do?">
+                        <span>19</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="19">
+                        <input class="appointment" type="text" required="true" data-date-day="20"
+                            placeholder="What would you like to do?">
+                        <span>20</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="20">
+                        <input class="appointment" type="text" required="true" data-date-day="21"
+                            placeholder="What would you like to do?">
+                        <span>21</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="21">
+                        <input class="appointment" type="text" required="true" data-date-day="22"
+                            placeholder="What would you like to do?">
+                        <span>22</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="22">
+                        <input class="appointment" type="text" required="true" data-date-day="23"
+                            placeholder="What would you like to do?">
+                        <span>23</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="23">
+                        <input class="appointment" type="text" required="true" data-date-day="24"
+                            placeholder="What would you like to do?">
+                        <span>24</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="24">
+                        <input class="appointment" type="text" required="true" data-date-day="25"
+                            placeholder="What would you like to do?">
+                        <span>25</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="25">
+                        <input class="appointment" type="text" required="true" data-date-day="26"
+                            placeholder="What would you like to do?">
+                        <span>26</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="26">
+                        <input class="appointment" type="text" required="true" data-date-day="27"
+                            placeholder="What would you like to do?">
+                        <span>27</span>
+                        <em></em>
+                    </label>
+
+
+                    <label class="day" data-day="27">
+                        <input class="appointment" type="text" required="true" data-date-day="28"
+                            placeholder="What would you like to do?">
+                        <span>28</span>
+                        <em></em>
+                    </label>
+                    <label class="day" data-day="28">
+                        <input class="appointment" type="text" required="true" data-date-day="29"
+                            placeholder="What would you like to do?">
+                        <span>29</span>
+                        <em></em>
+                    </label>
+                    <label class="day" data-day="29">
+                        <input class="appointment" type="text" required="true" data-date-day="30"
+                            placeholder="What would you like to do?">
+                        <span>30</span>
+                        <em></em>
+                    </label>
+
+                    <div class="clearfix"></div>
+                </form>
+            </section>
+
+            <!-- Your calendar implementation goes here -->
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function approveLeave(button) {
+            // Get the parent element of the button (leave item)
+            var leaveItem = button.parentNode.parentNode;
+
+            // Remove the leave item from the list
+            leaveItem.remove();
+
+            // Display a success message
+            alert('Leave Approved');
+        }
+
+        function denyLeave(button) {
+            // Get the parent element of the button (leave item)
+            var leaveItem = button.parentNode.parentNode;
+
+            // Remove the leave item from the list
+            leaveItem.remove();
+
+            // Display a success message
+            alert('Leave Denied');
+        }
+
+
+        function approveBonafide(button) {
+            // Get the parent element of the button (bonafide item)
+            var bonafideItem = button.parentNode.parentNode;
+
+            // Remove the bonafide item from the list
+            bonafideItem.remove();
+
+            // Display a success message
+            alert('Bonafide Approved');
+        }
+
+        function denyBonafide(button) {
+            // Get the parent element of the button (bonafide item)
+            var bonafideItem = button.parentNode.parentNode;
+
+            // Remove the bonafide item from the list
+            bonafideItem.remove();
+
+            // Display a success message
+            alert('Bonafide Denied');
+        }
+
+
+
+        document.getElementById('downloadButton').addEventListener('click', () => {
+            // Redirect the user to the download URL
+            window.location.href = '/download-attendance';
+        });
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function logout() {
+            // Perform logout actions here
+            // For example, redirect to the login page
+            window.location.href = '/login.html'; // Change the URL according to your login page route
+        }    </script>
+</body>
+
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="navbar-top">
+        <div class="title">
+            <h1>Profile Page</h1>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <div class="profile">
+            <img src="profile.png" alt="" width="100" height="100">
+            <div class="name" id="name"></div>
+            <div class="job" id="job"></div>
+        </div>
+
+        <div class="sidenav-url">
+            <div class="url">
+                <a id="salaryLink" href="#">Salary</a>
+            </div>
+            <div class="url">
+                <a id="documents" href="#" onclick="openDocumentsPopup()">Documents</a>
+            </div>
+
+            <div class="url">
+                <a id="bonafide" onclick="openModal('bonafideModal')" href="#">Apply Bonafide</a>
+            </div>
+            <div class="url">
+                <a id="leave" onclick="openModal('leaveModal')" href="#">Apply Leave</a>
+            </div>
+            <div class="url">
+                <a id="change-password" href="#">Change Password</a>
+            </div>
+        </div>
+    </div>
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Change Password</h2>
+            <form id="change-password-form">
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+                <br><br>
+                <button type="submit">Change</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="leaveModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('leaveModal')">&times;</span>
+            <h2>Apply Leave</h2>
+            <form id="apply-leave-form" action="/applyLeave" onsubmit="submitLeaveForm(event)">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" required>
+                <br><br>
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date" required>
+                <br><br>
+                <label for="leave_reason">Reason:</label>
+                <textarea id="leave_reason" name="leave_reason" required></textarea>
+                <br><br>
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div id="bonafideModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bonafideModal')">&times;</span>
+            <h2>Apply Bonafide</h2>
+            <form id="apply-bonafide-form" action="/applyBonafide" onsubmit="submitBonafideForm(event)">
+                <label for="bonafide_reason">Reason:</label>
+                <textarea id="bonafide_reason" name="bonafide_reason" required></textarea>
+                <br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <div id="salaryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Salary Information</h2>
+            <br>
+            <table style="margin-left: 50px;">
+                <tbody>
+                    <tr>
+                        <td style="padding-bottom: 20px;">Basic Salary</td>
+                        <td style="padding-bottom: 20px;">:</td>
+                        <td style="padding-bottom: 20px;" id="basic-salary-value"></td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td style="padding-bottom: 20px;">Taxes</td>
+                        <td style="padding-bottom: 20px;">:</td>
+                        <td style="padding-bottom: 20px;" id="taxes-value"></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 20px;">Monthly Salary</td>
+                        <td style="padding-bottom: 20px;">:</td>
+                        <td style="padding-bottom: 20px;" id="monthly-salary-value"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="main">
+        <h2>IDENTITY</h2>
+        <div class="card">
+            <div class="card-body">
+                <a href="#" id="editBtn">
+                    <i class="fa fa-pen fa-xs edit"></i>
+                </a>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td id="name-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td id="email-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Number</td>
+                            <td>:</td>
+                            <td id="mobile-number-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td>:</td>
+                            <td id="date-of-birth-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>:</td>
+                            <td id="address-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Blood Group</td>
+                            <td>:</td>
+                            <td id="blood-group-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Marital Status</td>
+                            <td>:</td>
+                            <td id="marital-status-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Bachelor's Degree</td>
+                            <td>:</td>
+                            <td id="bachelor-degree-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Master's Degree</td>
+                            <td>:</td>
+                            <td id="master-degree-value"></td>
+                        </tr>
+                        <tr>
+                            <td>Research</td>
+                            <td>:</td>
+                            <td id="research-value"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div id="editModalContent">
+            <span class="close">&times;</span>
+            <h2>Edit Details</h2>
+            <form id="edit-form">
+                <label for="name-input">Name:</label>
+                <input type="text" id="name-input" required>
+                <br>
+                <label for="mobile-input">Mobile Number:</label>
+                <input type="text" id="mobile-input" required>
+                <br>
+                <label for="dob-input">Date of Birth:</label>
+                <input type="text" id="dob-input" required>
+                <br>
+                <label for="address-input">Address:</label>
+                <input type="text" id="address-input" required>
+                <br>
+                <label for="blood-group-input">Blood Group:</label>
+                <input type="text" id="blood-group-input" required>
+                <br>
+                <label for="marital-status-input">Marital Status:</label>
+                <input type="text" id="marital-status-input" required>
+                <br>
+                <label for="bachelor-degree-input">Bachelor's Degree:</label>
+                <input type="text" id="bachelor-degree-input" required>
+                <br>
+                <label for="master-degree-input">Master's Degree:</label>
+                <input type="text" id="master-degree-input" required>
+                <br>
+                <label for="research-input">Research:</label>
+                <input type="text" id="research-input" required>
+                <br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the faculty details from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const facultyId = urlParams.get('faculty_id');
+
+        // Fetch the profile data from the server
+        // Fetch the profile data from the server
+        fetch(`/profile/${facultyId}`)
+            .then((response) => response.json())
+            .then((profileData) => {
+                // Update the HTML elements with the retrieved profile data
+                document.getElementById("name").innerText = profileData.name;
+                document.getElementById("job").innerText = profileData.designation;
+                document.getElementById("name-value").innerText = profileData.name;
+                document.getElementById("email-value").innerText = profileData.email;
+                document.getElementById("mobile-number-value").innerText = profileData.mobile_number;
+
+                // Update the date of birth in "YYYY-MM-DD" format
+                const dateOfBirth = new Date(profileData.date_of_birth);
+                const formattedDateOfBirth = `${dateOfBirth.getFullYear()}-${(dateOfBirth.getMonth() + 1).toString().padStart(2, '0')}-${dateOfBirth.getDate().toString().padStart(2, '0')}`;
+                document.getElementById("date-of-birth-value").innerText = formattedDateOfBirth;
+
+                document.getElementById("address-value").innerText = profileData.address;
+                document.getElementById("blood-group-value").innerText = profileData.blood_group;
+                document.getElementById("marital-status-value").innerText = profileData.marital_status;
+                document.getElementById("bachelor-degree-value").innerText = profileData.bachelor_degree;
+                document.getElementById("master-degree-value").innerText = profileData.masters_degree;
+                document.getElementById("research-value").innerText = profileData.research;
+                document.getElementById('name').innerText = profileData.name;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        fetch(`/salary/${facultyId}`)
+            .then((response) => response.json())
+            .then((salaryData) => {
+                // Update the salary data
+                document.getElementById("basic-salary-value").innerText = salaryData.basic_salary;
+                document.getElementById("taxes-value").innerText = salaryData.taxes;
+                document.getElementById("monthly-salary-value").innerText = salaryData.monthly_salary;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        // Get a reference to the "Change Password" link element
+        const changePasswordLink = document.getElementById('change-password');
+
+        // Add a click event listener to the "Change Password" link
+        changePasswordLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Display the change password modal
+            changePasswordModal.style.display = 'block';
+        });
+
+        // Get a reference to the change password modal and the close button
+        const changePasswordModal = document.getElementById('changePasswordModal');
+        const changePasswordCloseBtn = changePasswordModal.getElementsByClassName('close')[0];
+
+        // Add a click event listener to the close button of the change password modal
+        changePasswordCloseBtn.addEventListener('click', () => {
+            // Hide the change password modal when the close button is clicked
+            changePasswordModal.style.display = 'none';
+        });
+
+        // Add a click event listener to close the change password modal when the user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === changePasswordModal) {
+                changePasswordModal.style.display = 'none';
+            }
+        });
+
+        // Add a submit event listener to the change password form
+        // Add a submit event listener to the change password form
+        const changePasswordForm = document.getElementById('change-password-form');
+        changePasswordForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve the new password from the input field
+            const newPassword = document.getElementById('new-password').value;
+
+            // Define the password validation pattern
+            const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+            // Validate the new password against the pattern
+            if (!passwordPattern.test(newPassword)) {
+                // Display an error message
+                const errorElement = document.getElementById('change-password-error');
+                alert('Password should be at least 8 characters long and contain at least one number and one special character.');
+                return;
+            }
+
+            // Send the new password to the server
+            fetch('/changePassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    facultyId: facultyId,
+                    newPassword: newPassword
+                })
+            })
+                .then((response) => response.json())
+                .then((updatedPassword) => {
+                    console.log('Password updated successfully:', updatedPassword);
+
+                    // Reset the form and hide the change password modal
+                    changePasswordForm.reset();
+                    changePasswordModal.style.display = 'none';
+                })
+                .catch((error) => {
+                    console.log('An error occurred while updating the password:', error);
+                });
+        });
+
+
+        function openDocumentsPopup() {
+            const popupContent = document.createElement('div');
+            popupContent.classList.add('popup-content');
+            popupContent.innerHTML = `
+        <h2>Upload Documents</h2>
+        <form id="upload-form">
+        <label for="cv-input">CV:</label>
+        <input type="file" id="cv-input" name="cv" accept=".pdf">
+        <br><br>
+        <label for="tor-input">Transcript of Record:</label>
+        <input type="file" id="tor-input" name="tor" accept=".pdf">
+        <br><br>
+        <label for="pvc-input">PVC:</label>
+        <input type="file" id="pvc-input" name="pvc" accept=".pdf">
+        <br><br>
+        <button type="submit">Upload</button>
+        </form>
+    `;
+
+            document.body.appendChild(popupContent);
+
+            const uploadForm = document.getElementById('upload-form');
+            uploadForm.addEventListener('submit', handleUploadFormSubmit);
+        }
+
+        function handleUploadFormSubmit(event) {
+            event.preventDefault();
+
+            const facultyId = urlParams.get('faculty_id');
+            const cvFile = document.getElementById('cv-input').files[0];
+            const torFile = document.getElementById('tor-input').files[0];
+            const pvcFile = document.getElementById('pvc-input').files[0];
+
+            updateDetailsTable(facultyId, cvFile, torFile, pvcFile);
+
+            const popupContent = document.querySelector('.popup-content');
+            document.body.removeChild(popupContent);
+        }
+
+
+        function updateDetailsTable(facultyId, cvFile, torFile, pvcFile) {
+            const formData = new FormData();
+            formData.append('faculty_id', facultyId);
+            formData.append('cv', cvFile);
+            formData.append('tor', torFile);
+            formData.append('pvc', pvcFile);
+
+            fetch('/updateDetails', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+
+
+        // Get a reference to the "Salary" link element
+        const salaryLink = document.getElementById('salaryLink');
+
+        // Get a reference to the modal and the close button
+        const modal = document.getElementById('salaryModal');
+        const closeBtn = modal.getElementsByClassName('close')[0];
+
+        // Add a click event listener to the "Salary" link
+        salaryLink.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Display the modal
+            modal.style.display = 'block';
+        });
+
+        // Add a click event listener to the close button
+        closeBtn.addEventListener('click', () => {
+            // Hide the modal when the close button is clicked
+            modal.style.display = 'none';
+        });
+
+        // Close the modal when the user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Get a reference to the edit button
+        const editBtn = document.getElementById('editBtn');
+
+        // Get a reference to the edit modal and the close button
+        const editModal = document.getElementById('editModal');
+        const editModalCloseBtn = editModal.getElementsByClassName('close')[0];
+
+        // Add a click event listener to the edit button
+        editBtn.addEventListener('click', () => {
+            // Display the edit modal
+            editModal.style.display = 'block';
+        });
+
+        // Add a click event listener to the close button of the edit modal
+        editModalCloseBtn.addEventListener('click', () => {
+            // Hide the edit modal when the close button is clicked
+            editModal.style.display = 'none';
+        });
+
+        // Close the edit modal when the user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+
+        // Add a click event listener to the edit modal submit button
+        const editForm = document.getElementById('edit-form');
+        editForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve the updated values from the input fields
+            const facultyId = urlParams.get('faculty_id');
+            const newName = document.getElementById('name-input').value;
+            const newMobileNumber = document.getElementById('mobile-input').value;
+            const newDateOfBirth = document.getElementById('dob-input').value;
+            const newAddress = document.getElementById('address-input').value;
+            const newBloodGroup = document.getElementById('blood-group-input').value;
+            const newMaritalStatus = document.getElementById('marital-status-input').value;
+            const newBachelorDegree = document.getElementById('bachelor-degree-input').value;
+            const newMasterDegree = document.getElementById('master-degree-input').value;
+            const newResearch = document.getElementById('research-input').value;
+
+            // Update the HTML elements with the new values
+            document.getElementById('name-value').innerText = newName;
+            document.getElementById('mobile-number-value').innerText = newMobileNumber;
+            document.getElementById('date-of-birth-value').innerText = newDateOfBirth;
+            document.getElementById('address-value').innerText = newAddress;
+            document.getElementById('blood-group-value').innerText = newBloodGroup;
+            document.getElementById('marital-status-value').innerText = newMaritalStatus;
+            document.getElementById('bachelor-degree-value').innerText = newBachelorDegree;
+            document.getElementById('master-degree-value').innerText = newMasterDegree;
+            document.getElementById('research-value').innerText = newResearch;
+            document.getElementById('name').innerText = newName;
+
+
+            // Send the updated profile data to the server
+            fetch('/updateProfile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    facultyId: facultyId,
+                    name: newName,
+                    mobileNumber: newMobileNumber,
+                    dateOfBirth: newDateOfBirth,
+                    address: newAddress,
+                    bloodGroup: newBloodGroup,
+                    maritalStatus: newMaritalStatus,
+                    bachelorDegree: newBachelorDegree,
+                    masterDegree: newMasterDegree,
+                    research: newResearch
+                })
+            })
+                .then((response) => response.json())
+
+                .then((updatedProfile) => {
+                    console.log('Profile updated successfully:', updatedProfile);
+                })
+                .catch((error) => {
+                    console.log('An error occurred while updating the profile:', error);
+                });
+
+            // Hide the edit modal
+            editModal.style.display = 'none';
+        });
+
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+        }
+
+
+        function submitLeaveForm(event) {
+            event.preventDefault();
+
+            const startDate = document.getElementById('start_date').value;
+            const endDate = document.getElementById('end_date').value;
+            const reason = document.getElementById('leave_reason').value;
+
+            const formData = new FormData();
+            formData.append('start_date', startDate);
+            formData.append('end_date', endDate);
+            formData.append('leave_reason', reason);
+
+            fetch('/applyLeave', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    closeModal('leaveModal');
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            alert('Leave Application submitted')
+        }
+
+        function submitBonafideForm(event) {
+            event.preventDefault();
+
+            const reasonElement = document.getElementById('bonafide_reason');
+            if (reasonElement) {
+                const reason = reasonElement.value;
+
+                const formData = new FormData();
+                formData.append('bonafide_reason', reason);
+
+                fetch('/applyBonafide', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        closeModal('bonafideModal');
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            } else {
+                console.error("Element with ID 'bonafide_reason' not found");
+            }
+            alert('Bonafide Application submitted')
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

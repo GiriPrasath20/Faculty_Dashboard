@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <a href="#" onclick="redirectToProfile()" style="text-decoration: none; color: black;">
+            <div class="frame1">
+                <h3 id="name"></h3>
+                <h4 id="designation"></h4>
+                <h4 id="department"></h4>
+        </a>
+    </div>
+    <div class="frame4">
+        <section class="calendar">
+            <h1>July 2023</h1>
+            <form action="#">
+                <label class="weekday">Mo</label>
+                <label class="weekday">Tu</label>
+                <label class="weekday">We</label>
+                <label class="weekday">Th</label>
+                <label class="weekday">Fr</label>
+                <label class="weekday">Sa</label>
+                <label class="weekday">Su</label>
+
+                <label class="day invalid">-</label>
+                <label class="day invalid">-</label>
+                <label class="day invalid">-</label>
+                <label class="day" data-day="0">
+                    <input class="appointment" type="text" required="true" data-date-day="1"
+                        placeholder="What would you like to do?">
+                    <span>1</span>
+                    <em></em>
+                </label>
+                <label class="day" data-day="1">
+                    <input class="appointment" type="text" required="true" data-date-day="2"
+                        placeholder="What would you like to do?">
+                    <span>2</span>
+                    <em></em>
+                </label>
+
+                <label class="day" data-day="2">
+                    <input class="appointment" type="text" required="true" data-date-day="3"
+                        placeholder="What would you like to do?">
+                    <span>3</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="3">
+                    <input class="appointment" type="text" required="true" data-date-day="4"
+                        placeholder="What would you like to do?">
+                    <span>4</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="4">
+                    <input class="appointment" type="text" required="true" data-date-day="5"
+                        placeholder="What would you like to do?">
+                    <span>5</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="5">
+                    <input class="appointment" type="text" required="true" data-date-day="6"
+                        placeholder="What would you like to do?">
+                    <span>6</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="6">
+                    <input class="appointment" type="text" required="true" data-date-day="7"
+                        placeholder="What would you like to do?">
+                    <span>7</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="7">
+                    <input class="appointment" type="text" required="true" data-date-day="8"
+                        placeholder="What would you like to do?">
+                    <span>8</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="8">
+                    <input class="appointment" type="text" required="true" data-date-day="9"
+                        placeholder="What would you like to do?">
+                    <span>9</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="9">
+                    <input class="appointment" type="text" required="true" data-date-day="10"
+                        placeholder="What would you like to do?">
+                    <span>10</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="10">
+                    <input class="appointment" type="text" required="true" data-date-day="11"
+                        placeholder="What would you like to do?">
+                    <span>11</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="11">
+                    <input class="appointment" type="text" required="true" data-date-day="12"
+                        placeholder="What would you like to do?">
+                    <span>12</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="12">
+                    <input class="appointment" type="text" required="true" data-date-day="13"
+                        placeholder="What would you like to do?">
+                    <span>13</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="13">
+                    <input class="appointment" type="text" required="true" data-date-day="14"
+                        placeholder="What would you like to do?">
+                    <span>14</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="14">
+                    <input class="appointment" type="text" required="true" data-date-day="15"
+                        placeholder="What would you like to do?">
+                    <span>15</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="15">
+                    <input class="appointment" type="text" required="true" data-date-day="16"
+                        placeholder="What would you like to do?">
+                    <span>16</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="16">
+                    <input class="appointment" type="text" required="true" data-date-day="17"
+                        placeholder="What would you like to do?">
+                    <span>17</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="17">
+                    <input class="appointment" type="text" required="true" data-date-day="18"
+                        placeholder="What would you like to do?">
+                    <span>18</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="18">
+                    <input class="appointment" type="text" required="true" data-date-day="19"
+                        placeholder="What would you like to do?">
+                    <span>19</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="19">
+                    <input class="appointment" type="text" required="true" data-date-day="20"
+                        placeholder="What would you like to do?">
+                    <span>20</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="20">
+                    <input class="appointment" type="text" required="true" data-date-day="21"
+                        placeholder="What would you like to do?">
+                    <span>21</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="21">
+                    <input class="appointment" type="text" required="true" data-date-day="22"
+                        placeholder="What would you like to do?">
+                    <span>22</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="22">
+                    <input class="appointment" type="text" required="true" data-date-day="23"
+                        placeholder="What would you like to do?">
+                    <span>23</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="23">
+                    <input class="appointment" type="text" required="true" data-date-day="24"
+                        placeholder="What would you like to do?">
+                    <span>24</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="24">
+                    <input class="appointment" type="text" required="true" data-date-day="25"
+                        placeholder="What would you like to do?">
+                    <span>25</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="25">
+                    <input class="appointment" type="text" required="true" data-date-day="26"
+                        placeholder="What would you like to do?">
+                    <span>26</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="26">
+                    <input class="appointment" type="text" required="true" data-date-day="27"
+                        placeholder="What would you like to do?">
+                    <span>27</span>
+                    <em></em>
+                </label>
+
+
+                <label class="day" data-day="27">
+                    <input class="appointment" type="text" required="true" data-date-day="28"
+                        placeholder="What would you like to do?">
+                    <span>28</span>
+                    <em></em>
+                </label>
+                <label class="day" data-day="28">
+                    <input class="appointment" type="text" required="true" data-date-day="29"
+                        placeholder="What would you like to do?">
+                    <span>29</span>
+                    <em></em>
+                </label>
+                <label class="day" data-day="29">
+                    <input class="appointment" type="text" required="true" data-date-day="30"
+                        placeholder="What would you like to do?">
+                    <span>30</span>
+                    <em></em>
+                </label>
+
+                <div class="clearfix"></div>
+            </form>
+        </section>
+    </div>
+
+    <div class="frame2 scrollbar" id="style-2">
+        <button id="addTaskButton" style="margin-top: -5px; margin-left: 200px;" onclick="openTaskPopup()">Add
+            Task</button>
+        <h3>Tasks</h3>
+        <ul id="taskList" style="margin-top: -10px;"></ul>
+    </div>
+
+
+    <div id="taskPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closeTaskPopup()">&times;</span>
+            <h3>Add Task</h3>
+            <form id="taskForm" action="/addTask" method="POST" onsubmit="addTask(event)">
+                <input type="text" id="taskInput" placeholder="Enter task description" required>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="frame5">
+        <h3>Exam Cell</h3>
+        <br>
+        <button class="exam-button exam-button1" onclick="openExamPage1()">Quiz</button>
+        <button class="exam-button exam-button2" onclick="openExamPage2()">Exams</button>
+    </div>
+    <div id="frame6" class="frame6">
+        <h3 id="frame6Title"></h3>
+        <p id="frame6Content"></p>
+        <button id="submitbutton">Submit</button>
+
+    </div>
+    <div class="frame3">
+        <h3 style="margin-top: -1px;">Attendance</h3>
+        <br>
+        <center>
+            <button id="attendanceButton" style="font-size: 20px;" onclick="toggleAttendance()">IN</button>
+        </center>
+
+    </div>
+    <div class="power-button-container" onclick="logout()">
+        <div class="power-button">
+            <i class="fas fa-power-off" style="font-size: 25px;"></i>
+        </div>
+    </div>
+    <script>
+        var attendanceButton = document.getElementById("attendanceButton");
+        var isAttendanceIn = true;
+        var attendanceLog = [];
+
+        // Retrieve the faculty details from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const designation = urlParams.get('designation');
+        const department = urlParams.get('department');
+        const facultyId = urlParams.get('faculty_id');
+
+        // Update the HTML elements with the retrieved faculty details
+        document.getElementById("name").innerText = name;
+        document.getElementById("designation").innerText = designation;
+        document.getElementById("department").innerText = "Department: " + department;
+
+        function redirectToProfile() {
+            const url = `profile.html?faculty_id=${encodeURIComponent(facultyId)}&designation=${encodeURIComponent(designation)}`;
+            window.location.href = url;
+        }
+
+        function toggleAttendance() {
+
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = ('0' + (now.getMonth() + 1)).slice(-2);
+            var day = ('0' + now.getDate()).slice(-2);
+            var hours = ('0' + now.getHours()).slice(-2);
+            var minutes = ('0' + now.getMinutes()).slice(-2);
+            var seconds = ('0' + now.getSeconds()).slice(-2);
+
+            var dateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            console.log(dateTime);
+
+
+            if (isAttendanceIn) {
+                attendanceButton.innerText = "OUT";
+                attendanceButton.style.backgroundColor = "red";
+                attendanceLog.push({
+                    inTime: dateTime
+                });
+            } else {
+                attendanceButton.innerText = "IN";
+                attendanceButton.style.backgroundColor = ""; // Revert button color to default
+                var lastIndex = attendanceLog.length - 1;
+                attendanceLog[lastIndex].outTime = dateTime;
+            }
+
+            isAttendanceIn = !isAttendanceIn;
+
+            if (isAttendanceIn) {
+                // Send the attendance log to the server
+                sendAttendanceLog();
+            }
+        }
+
+
+        function sendAttendanceLog() {
+            // Retrieve the faculty_id from the query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const facultyId = urlParams.get('faculty_id');
+
+            // Retrieve the in_time and out_time from the attendanceLog
+            const inTime = attendanceLog[0].inTime;
+            const outTime = attendanceLog[attendanceLog.length - 1].outTime;
+
+            console.log(facultyId, inTime, outTime); // Check the values in the browser console
+
+            // Make an HTTP POST request to store the attendance data
+            fetch('/attendance', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ facultyId, inTime, outTime }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data); // Optional: Handle the response from the server
+                })
+                .catch((error) => {
+                    console.error(error); // Optional: Handle any errors
+                });
+        }
+
+        function openTaskPopup() {
+            const taskPopup = document.getElementById("taskPopup");
+            taskPopup.style.display = "block";
+        }
+
+        function closeTaskPopup() {
+            const taskPopup = document.getElementById("taskPopup");
+            taskPopup.style.display = "none";
+        }
+
+        function addTask(event) {
+            event.preventDefault(); // Prevent the form from submitting and page refresh
+
+            const taskDescription = document.getElementById('taskInput').value;
+
+            // Create an object to hold the task data
+            const taskData = {
+                facultyId: facultyId,
+                taskDescription: taskDescription
+            };
+
+            // Make an HTTP POST request to add the task
+            fetch('/addTask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(taskData),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data); // Check the response in the browser console
+                    if (data.success) {
+                        // Task added successfully
+                        // Close the popup or perform any other actions
+                        closeTaskPopup();
+
+                        // Update the task list with the new task description
+                        const taskList = document.getElementById('taskList');
+                        const listItem = document.createElement('li');
+                        listItem.textContent = taskDescription;
+                        taskList.appendChild(listItem);
+
+                        // Reset the task description input box
+                        document.getElementById('taskInput').value = '';
+                    } else {
+                        // Failed to add the task
+                        // Handle the error or display an error message
+                    }
+                })
+                .catch((error) => {
+                    console.error(error); // Optional: Handle any errors
+                });
+        }
+
+        function logout() {
+            // Perform logout actions here
+            // For example, redirect to the login page
+            window.location.href = '/login.html'; // Change the URL according to your login page route
+        }
+
+        // Retrieve task descriptions from the server
+        fetch(`/task/${facultyId}`)
+            .then((response) => response.json())
+            .then((taskDescriptions) => {
+                const taskList = document.getElementById('taskList');
+
+                taskDescriptions.forEach((taskDescription) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = taskDescription;
+                    taskList.appendChild(listItem);
+                });
+            })
+            .catch((error) => console.error('Error:', error));
+
+        // Determine the frame6 content based on the designation
+        if (designation === 'faculty') {
+            document.getElementById("frame6Title").innerText = "Materials Upload";
+            document.getElementById("frame6Content").innerHTML = "<input type=\"file\" id=\"fileInput\">";
+            document.getElementById("submitbutton").addEventListener("click", submitMaterials);
+
+            function submitMaterials() {
+                const fileInput = document.getElementById("fileInput");
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    console.error('No file selected');
+                    return;
+                }
+
+                const fileSizeKB = Math.round(file.size / 1024); // Convert file size to KB
+
+                const formData = new FormData();
+                formData.append('file_data', file);
+                formData.append('file_name', file.name);
+                formData.append('file_size', fileSizeKB); // Use the converted file size in KB
+                formData.append('faculty_id', facultyId);
+
+                // Make an HTTP POST request to upload the file
+                fetch('/materials', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data); // Check the response in the browser console
+                        if (data.success) {
+                            // File uploaded successfully
+                            // Perform any necessary actions
+                        } else {
+                            // Failed to upload the file
+                            // Handle the error or display an error message
+                        }
+                    })
+                    .catch((error) => {
+                        console.error(error); // Optional: Handle any errors
+                    });
+            }
+
+
+        }
+        else if (designation === 'advisor') {
+            document.getElementById("frame6Title").innerText = "Gate Passes";
+            document.getElementById("submitbutton").innerText = "View";
+            document.getElementById("submitbutton").addEventListener("click", function () {
+                window.location.href = "/gatepasses.html";
+            });
+        } else {
+            document.getElementById("frame6").style.display = "none"; // Hide the frame for other designations
+        }
+
+        function openExamPage1() {
+            window.location.href = "https://forms.microsoft.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=o835AF4H5USqC6ujrdZTn_-Dh_3tV6ZOp9cXPR-I6nRUNk1CU1NQRDBaWDJHUEoyWlVIUDZaQTFVNy4u";
+        }
+
+
+        function openExamPage2() {
+            window.location.href = "/exam.html"; // Replace with the URL of the desired page
+        }
+    </script>
+</body>
+
+</html>

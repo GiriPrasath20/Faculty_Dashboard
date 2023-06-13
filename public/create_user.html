@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'consolas', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 48px;
+            margin-top: 120px;
+
+        }
+
+        p {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+            color: white;
+        }
+
+        .logo {
+            width: 50px;
+            fill: white;
+            padding-right: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 90px;
+
+        }
+
+        .inner-header {
+            height: 65vh;
+            width: 100%;
+            padding: 0;
+        }
+
+        .flex {
+            /*Flexbox for containers*/
+            margin-top: -300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin-bottom: 0px;
+            /*Fix for safari gap*/
+            min-height: 200px;
+            max-height: 290px;
+        }
+
+        .content {
+            position: relative;
+            height: 20vh;
+            text-align: center;
+            background-color: white;
+        }
+
+        /* Animation */
+
+        .parallax>use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax>use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+
+        .parallax>use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+
+        .parallax>use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+
+        .parallax>use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% {
+                transform: translate3d(-90px, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(85px, 0, 0);
+            }
+        }
+
+        /*Shrinking for mobile*/
+        @media (max-width: 768px) {
+            .waves {
+                height: 40px;
+                min-height: 40px;
+            }
+
+            .content {
+                height: 30vh;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            height: auto;
+            margin-top: -50px;
+            border-radius: 5px;
+            padding: 160px 150px;
+            width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 103%;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .message.success {
+            background-color: #4CAF50;
+        }
+
+        .message.error {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="header">
+
+        <div style="margin-top: -120px;">
+            <form id="createUserForm" action="/createUser" method="POST">
+
+                <label for="faculty_id">Faculty ID:</label>
+                <input type="text" id="faculty_id" name="faculty_id" required>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="passcode">Passcode:</label>
+                <input type="password" id="passcode" name="passcode" required>
+
+                <label for="designation">Designation:</label>
+                <select id="designation" name="designation" required>
+                    <option value="faculty">Faculty</option>
+                    <option value="advisor">Advisor</option>
+                    <option value="admin">Admin</option>
+                    <option value="principal">Principal</option>
+                </select>
+
+                <label for="basicsalary">Basic Salary:</label>
+                <input type="number" id="basicsalary" name="basicsalary" required>
+                <button type="submit">Add User</button>
+            </form>
+
+            <div id="message"></div>
+        </div>
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+
+            <!--Waves Container-->
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave"
+                            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                    </g>
+                </svg>
+            </div>
+            <!--Waves end-->
+
+
+            <script>
+
+                var colors = new Array(
+                    [60, 255, 60],
+                    [255, 35, 98],
+                    [45, 175, 230],
+                    [255, 0, 255],
+                    [255, 128, 0]);
+
+                var step = 0;
+                //color table indices for: 
+                // current color left
+                // next color left
+                // current color right
+                // next color right
+                var colorIndices = [0, 1, 2, 3];
+
+                //transition speed
+                var gradientSpeed = 0.0010;
+
+                function updateGradient() {
+
+                    if ($ === undefined) return;
+
+                    var c0_0 = colors[colorIndices[0]];
+                    var c0_1 = colors[colorIndices[1]];
+                    var c1_0 = colors[colorIndices[2]];
+                    var c1_1 = colors[colorIndices[3]];
+
+                    var istep = 1 - step;
+                    var r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
+                    var g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
+                    var b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
+                    var color1 = "rgb(" + r1 + "," + g1 + "," + b1 + ")";
+
+                    var r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
+                    var g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
+                    var b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
+                    var color2 = "rgb(" + r2 + "," + g2 + "," + b2 + ")";
+
+                    $('#gradient').css({
+                        background: "-webkit-gradient(linear, left top, right top, from(" + color1 + "), to(" + color2 + "))"
+                    }).css({
+                        background: "-moz-linear-gradient(left, " + color1 + " 0%, " + color2 + " 100%)"
+                    });
+
+                    step += gradientSpeed;
+                    if (step >= 1) {
+                        step %= 1;
+                        colorIndices[0] = colorIndices[1];
+                        colorIndices[2] = colorIndices[3];
+
+                        //pick two new target color indices
+                        //do not pick the same as the current one
+                        colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+                        colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+
+                    }
+                }
+
+                setInterval(updateGradient, 10);
+                const form = document.getElementById('createUserForm');
+                const messageDiv = document.getElementById('message');
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const facultyId = document.getElementById('faculty_id').value;
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const passcode = document.getElementById('passcode').value;
+                    const designation = document.getElementById('designation').value;
+                    const basicsalary = document.getElementById('basicsalary').value;
+
+                    const data = {
+                        faculty_id: facultyId,
+                        name: name,
+                        email: email,
+                        passcode: passcode,
+                        designation: designation,
+                        basic_salary: basicsalary // Updated key from 'basicsalary' to 'basic_salary'
+                    };
+
+
+                    fetch('/createUser', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                showMessage('User created successfully', 'success');
+                                form.reset();
+                            } else {
+                                showMessage(result.message, 'error');
+                            }
+                        })
+                        .catch(error => {
+                            showMessage('An error occurred. Please try again.', 'error');
+                            console.error(error);
+                        });
+                });
+
+                function showMessage(message, type) {
+                    messageDiv.textContent = message;
+                    messageDiv.className = 'message ' + type;
+                }
+
+
+            </script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gate Passes</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4a148c, #7b1fa2);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 50px;
+            margin-left: 120px;
+            border-radius: 5px;
+            width: 900px;
+        }
+
+        .student-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .student-name,
+        .student-rollno,
+        .from-date,
+        .to-date,
+        .actions {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .actions button {
+            background: linear-gradient(to right, #1de9b6, #00bfa5);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            margin-left: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            /* Change the background color on hover */
+            background: linear-gradient(to right, #764ba2, #667eea);
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="student-details">
+            <div class="student-name"><strong>Name:</strong> Student1</div>
+            <div class="student-rollno"><strong>RollNo:</strong> 13</div>
+            <div class="from-date"><strong>From:</strong> June 15, 2023</div>
+            <div class="to-date"><strong>To:</strong> June 17, 2023</div>
+            <div class="actions">
+                <button>Approve</button>
+                <button>Deny</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="student-details">
+            <div class="student-name"><strong>Name:</strong> Student2</div>
+            <div class="student-rollno"><strong>RollNo:</strong> 143</div>
+            <div class="from-date"><strong>From:</strong> June 15, 2023</div>
+            <div class="to-date"><strong>To:</strong> June 16, 2023</div>
+            <div class="actions">
+                <button>Approve</button>
+                <button>Deny</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="student-details">
+            <div class="student-name"><strong>Name:</strong> Student3</div>
+            <div class="student-rollno"><strong>RollNo:</strong> 134</div>
+            <div class="from-date"><strong>From:</strong> June 15, 2023</div>
+            <div class="to-date"><strong>To:</strong> June 20, 2023</div>
+            <div class="actions">
+                <button>Approve</button>
+                <button>Deny</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Add event listeners to the approve and deny buttons
+        const approveButtons = document.querySelectorAll('.actions button:nth-of-type(1)');
+        const denyButtons = document.querySelectorAll('.actions button:nth-of-type(2)');
+
+        approveButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const studentName = button.parentNode.parentNode.querySelector('.student-name').innerText;
+                alert(`Gatepass is approved for ${studentName}`);
+                button.parentNode.parentNode.parentNode.classList.add('hidden');
+            });
+        });
+
+        denyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const studentName = button.parentNode.parentNode.querySelector('.student-name').innerText;
+                alert(`Gatepass is denied for ${studentName}`);
+                button.parentNode.parentNode.parentNode.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
