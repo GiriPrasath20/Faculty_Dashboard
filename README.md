@@ -20,6 +20,7 @@ The Faculty Dashboard is a web application designed to simplify administrative t
 
 ## Technologies Used
 
+- Figma for project design (https://www.figma.com/file/L6sq7qIOscgSIt0zb4bTVo/Faculty-Dashboard?type=design&node-id=0%3A1&mode=design&t=TPtbl7KlLeet3j9W-1)
 - HTML, CSS, JavaScript for frontend development
 - Node.js for server-side JavaScript
 - Postman for testing API endpoints
