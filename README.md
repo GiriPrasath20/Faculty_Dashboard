@@ -28,12 +28,6 @@ The Faculty Dashboard is a web application designed to simplify administrative t
 - Selenium for automated browser testing
 - LoadView for performance and load testing
 
-## Installation
-
-1. Clone the repository: `git clone https://github.com/your-username/faculty-dashboard.git`
-2. Install the required dependencies: `npm install`
-3. Configure the database settings in `config.js`
-4. Start the server: `node app.js`
 
 ## Usage
 
